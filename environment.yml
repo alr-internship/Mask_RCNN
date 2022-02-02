@@ -1,4 +1,4 @@
-name: mask_rcnn_tf1
+name: mask_rcnn
 channels:
   - conda-forge
   - defaults

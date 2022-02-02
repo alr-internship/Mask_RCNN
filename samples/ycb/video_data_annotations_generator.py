@@ -83,7 +83,9 @@ def process_to_file(height, width, image_dir, categories, iscrowd,
     annotations_output_dir = input_dir + '/annotations'
     if not os.path.exists(annotations_output_dir):
         os.makedirs(annotations_output_dir)
-    with open(annotations_output_dir + f'/{filename}.json', 'w') as f:
+    output_json_file = annotations_output_dir + f'/{filename}.json' 
+    logging.info(f"saving json to {output_json_file}")
+    with open(output_json_file, 'w') as f:
         json.dump(json_data, f)
 
 
@@ -125,8 +127,8 @@ def main(args):
                   iscrowd=iscrowd, input_dir=input_dir, jobs=args.jobs)
 
     indices = np.random.randint(num_of_images, size=(num_of_images))
-    val_indices = indices[:(num_of_images // 20)]
-    test_indices = indices[(num_of_images // 20):]
+    val_indices = list(indices[:(num_of_images // 20)])
+    test_indices = list(indices[(num_of_images // 20):])
     assert num_of_images == (len(val_indices) + len(test_indices))
 
     process_to_file(image_names=np.array(image_names)[val_indices],
