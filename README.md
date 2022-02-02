@@ -239,3 +239,25 @@ A computer vision class project by HU Shiyu to apply the color pop effect on peo
 
 ### [GRASS GIS Addon](https://github.com/ctu-geoforall-lab/i.ann.maskrcnn) to generate vector masks from geospatial imagery. Based on a [Master's thesis](https://github.com/ctu-geoforall-lab-projects/dp-pesek-2018) by Ondřej Pešek.
 ![GRASS GIS Image](assets/project_grass_gis.png)
+
+# Setup
+Repos Used
+- https://github.com/sThalham/shelf_classification 
+- https://github.com/akTwelve/tutorials/blob/master/mask_rcnn/MaskRCNN_TrainAndInference.ipynb 
+- https://github.com/iyezhiyu/Mask_RCNN_on_YCB_Video_Dataset 
+- https://github.com/akTwelve/Mask_RCNN
+
+conda env create -f environment.yml
+export KERAS_BACKEND=tensorflow
+conda install -c conda-forge h5py=2.10.0
+
+or set 
+~/.conda/pkgs/keras-2.1.5-py36_0/etc/conda/activate.d/keras_activate.sh 
+KERAS_BACKEND=tensorflow 
+
+versions:
+- python 3.6
+- tensorflow 1.5.0
+- keras 2.1.5
+- scikit-image 0.16.2
+- h5py 2.10.0
