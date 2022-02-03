@@ -1,11 +1,11 @@
 #!/bin/bash
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=privat@claudiuskienle.de
-#SBATCH --partition=dev_single
+#SBATCH --partition=dev_single,single
 #SBATCH --nodes=1
 #SBATCH --time=00:30:00
 #SBATCH --cpus-per-task=40
-#SBATCH --export=ALL,EXECUTABLE="python ../video_data_annotations_generator.py"
+#SBATCH --export=ALL,EXECUTABLE="python ../samples/ycb/video_data_annotations_generator.py"
 #SBATCH --output="dev_generate_annotations.out"
 #SBATCH -J OpenMP_Test
 

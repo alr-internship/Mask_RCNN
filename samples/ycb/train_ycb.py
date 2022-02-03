@@ -8,6 +8,7 @@
 
 # %%
 import os
+os.environ["KERAS_BACKEND"] = "tensorflow"
 import sys
 import time
 import numpy as np
@@ -67,7 +68,7 @@ class YCBConfig(Config):
     TRAIN_ROIS_PER_IMAGE = 32
 
     # Use a small epoch since the data is simple
-    STEPS_PER_EPOCH = 100
+    STEPS_PER_EPOCH = 500
 
     # use small validation steps since the epoch is small
     VALIDATION_STEPS = 5
@@ -83,17 +84,6 @@ config.display()
 # ## Notebook Preferences
 
 # %%
-def get_ax(rows=1, cols=1, size=8):
-    """Return a Matplotlib Axes array to be used in
-    all visualizations in the notebook. Provide a
-    central point to control graph sizes.
-    
-    Change the default size attribute to control the size
-    of rendered images
-    """
-    _, ax = plt.subplots(rows, cols, figsize=(size*cols, size*rows))
-    return ax
-
 # %% [markdown]
 # ## Dataset
 # 
@@ -203,23 +193,19 @@ class YCBDataset(utils.Dataset):
 # %%
 # Training dataset
 data_dir = Path(ROOT_DIR + "/samples/ycb/data/YCB_Video_Dataset")
+train_file = data_dir / "annotations/train_instances_2.json"
+val_file = data_dir / "annotations/val_instances_2.json"
 
+print(f"Loading train dataset: {train_file}")
 dataset_train = YCBDataset()
-dataset_train.load_data(data_dir / "annotations/instances_2.json", data_dir / "data")
+dataset_train.load_data(train_file, data_dir / "data")
 dataset_train.prepare()
 
 # Validation dataset
+print(f"Loading validation dataset: {val_file}")
 dataset_val = YCBDataset()
-dataset_train.load_data(data_dir / "annotations/instances_2.json", data_dir / "data")
+dataset_val.load_data(val_file, data_dir / "data")
 dataset_val.prepare()
-
-# # %%
-# # Load and display random samples
-# image_ids = np.random.choice(dataset_train.image_ids, 4)
-# for image_id in image_ids:
-#     image = dataset_train.load_image(image_id)
-#     mask, class_ids = dataset_train.load_mask(image_id)
-#     visualize.display_top_masks(image, mask, class_ids, dataset_train.class_names)
 
 # %% [markdown]
 # ## Create Model

@@ -113,9 +113,13 @@ def main(args):
         line = image_names_file.readline()
     image_names_file.close()
 
-    # For shuffle the data
     num_of_images = len(image_names)
-    image_id_index = random.sample(list(range(num_of_images)), num_of_images)
+
+    # generate indices
+    image_id_index = list(range(num_of_images))
+
+    # shuffle data
+    random.shuffle(image_names)
 
     # Generate the images and the annotations
     image_dir = input_dir + '/data'
@@ -126,18 +130,17 @@ def main(args):
     params = dict(height=height, width=width, image_dir=image_dir, categories=categories,
                   iscrowd=iscrowd, input_dir=input_dir, jobs=args.jobs)
 
-    indices = np.random.randint(num_of_images, size=(num_of_images))
-    val_indices = list(indices[:(num_of_images // 20)])
-    test_indices = list(indices[(num_of_images // 20):])
-    assert num_of_images == (len(val_indices) + len(test_indices))
+    # random split
+    ds_border = num_of_images // 20
+    # assert num_of_images == (len(val_indices) + len(train_indices))
 
-    process_to_file(image_names=np.array(image_names)[val_indices],
-                    image_id_index=np.array(image_id_index)[val_indices],
-                    filename="val_instances", **params)
+    process_to_file(image_names=np.array(image_names)[:ds_border],
+                    image_id_index=np.array(image_id_index)[:ds_border].tolist(),
+                    filename="val_instances_2", **params)
 
-    process_to_file(image_names=np.array(image_names)[test_indices],
-                    image_id_index=np.array(image_id_index)[test_indices],
-                    filename="test_instances", **params)
+    process_to_file(image_names=np.array(image_names)[ds_border:],
+                    image_id_index=np.array(image_id_index)[ds_border:].tolist(),
+                    filename="train_instances_2", **params)
 
 
 if __name__ == "__main__":

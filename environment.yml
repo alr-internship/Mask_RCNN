@@ -217,9 +217,6 @@ dependencies:
   - xz=5.2.5=h516909a_1
   - yaml=0.2.5=h7f98852_2
   - zeromq=4.3.4=h9c3ff4c_1
-  - zipp=3.7.0=pyhd8ed1ab_0
-  - zlib=1.2.11=h36c2ea0_1013
-  - zstd=1.5.2=ha95c52a_0
 variables:
   KERAS_BACKEND: tensorflow
-prefix: /home/kit/anthropomatik/ng3916/.conda/envs/mask_rcnn_tf1
+prefix: /home/kit/anthropomatik/ng3916/.conda/envs/mask_rcnn

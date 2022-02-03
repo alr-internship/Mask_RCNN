@@ -1,12 +1,12 @@
 #!/bin/bash
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=privat@claudiuskienle.de
-#SBATCH --partition=dev_gpu_4
+#SBATCH --partition=dev_gpu_4,gpu_4
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=40
 #SBATCH --time=00:30:00
 #SBATCH --gres=gpu:2
-#SBATCH --export=ALL,EXECUTABLE="python ../samples/shapes/train_shapes.py"
+#SBATCH --export=ALL,EXECUTABLE="python ../samples/ycb/train_ycb.py"
 #SBATCH --output="dev_train_ycb.out"
 #SBATCH -J OpenMP_Test
 

@@ -44,5 +44,6 @@ Training
 
     The MaskRCNN can be trained by executing
     ```commandline
+        export KERAS_BACKEND=tensorflow
         python samples/ycb/train_ycb.py
     ```

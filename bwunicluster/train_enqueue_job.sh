@@ -7,7 +7,7 @@
 #SBATCH --time=12:00:00
 #SBATCH --gres=gpu:2
 #SBATCH --export=ALL,EXECUTABLE="python ../samples/ycb/train_ycb.py"
-#SBATCH --output="dev_train_ycb.out"
+#SBATCH --output="train_ycb.out"
 #SBATCH -J OpenMP_Test
 
 #Usually you should set
