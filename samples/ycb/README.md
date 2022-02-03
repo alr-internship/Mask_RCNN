@@ -17,6 +17,9 @@ Setup
     - keras 2.1.5
     - scikit-image 0.16.2
     - h5py 2.10.0
+    Functioning aswell:
+    - tensorflow 1.15.0 or tensorflow-gpu 1.15.0
+    - keras 2.3.1
     Make sure to install exactly these versions, as different versions will not work in many cases.
 
 1. Acivate conda environment

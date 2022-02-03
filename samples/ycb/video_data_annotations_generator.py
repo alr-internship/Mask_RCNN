@@ -136,11 +136,11 @@ def main(args):
 
     process_to_file(image_names=np.array(image_names)[:ds_border],
                     image_id_index=np.array(image_id_index)[:ds_border].tolist(),
-                    filename="val_instances_2", **params)
+                    filename="val_instances", **params)
 
     process_to_file(image_names=np.array(image_names)[ds_border:],
                     image_id_index=np.array(image_id_index)[ds_border:].tolist(),
-                    filename="train_instances_2", **params)
+                    filename="train_instances", **params)
 
 
 if __name__ == "__main__":

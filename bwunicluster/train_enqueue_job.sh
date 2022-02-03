@@ -1,10 +1,10 @@
 #!/bin/bash
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=privat@claudiuskienle.de
-#SBATCH --partition=gpu_4
+#SBATCH --partition=gpu_4,gpu_8
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=40
-#SBATCH --time=12:00:00
+#SBATCH --time=24:00:00
 #SBATCH --gres=gpu:2
 #SBATCH --export=ALL,EXECUTABLE="python ../samples/ycb/train_ycb.py"
 #SBATCH --output="train_ycb.out"
