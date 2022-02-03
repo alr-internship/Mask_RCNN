@@ -149,3 +149,4 @@ bwunicluster/wandb/run-20220203_161416-29hj7llj/files/requirements.txt
 bwunicluster/wandb/run-20220203_161416-29hj7llj/files/wandb-metadata.json
 bwunicluster/wandb/run-20220203_161416-29hj7llj/files/wandb-summary.json
 bwunicluster/train_enqueue_dev_job.sh
+/resources

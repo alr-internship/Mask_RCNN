@@ -78,7 +78,7 @@ def main(args):
 
         # If enabled, resizes instance masks to a smaller size to reduce
         # memory load. Recommended when using high-resolution images.
-        USE_MINI_MASK = False
+        # USE_MINI_MASK = False
         
     config = YCBConfig()
     config.display()
@@ -223,7 +223,8 @@ def main(args):
 
     # %%
     # Which weights to start with?
-    init_with = "coco"  # imagenet, coco, or last
+    # init_with = "coco"  # imagenet, coco, or last
+    init_with = "resources/ycb/mask_rcnn_ycb_video_dataset_0008.h5"
 
     if init_with == "imagenet":
         model.load_weights(model.get_imagenet_weights(), by_name=True)
@@ -237,6 +238,9 @@ def main(args):
     elif init_with == "last":
         # Load the last model you trained and continue training
         model.load_weights(model.find_last(), by_name=True)
+    else:
+        model_path = os.path.join(ROOT_DIR, init_with)
+        model.load_weights(model_path, by_name=True)
 
     # %% [markdown]
     # ## Training
