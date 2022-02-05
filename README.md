@@ -1,6 +1,9 @@
 Mask R-CNN trained on YCB Video Dataset
 ====
 
+Detection example (trained for 8 epochs):
+![](assets/img1.png)
+
 Setup
 ----
 
@@ -50,3 +53,5 @@ Training
         export KERAS_BACKEND=tensorflow
         python samples/ycb/train_ycb.py
     ```
+    Per default, a snapshot of the model will be made every epoch.
+    They can be found in the [logs](samples/ycb/logs) folder.
