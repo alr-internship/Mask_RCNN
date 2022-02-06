@@ -1,6 +1,5 @@
 import os
 
-from mrcnn import utils
 os.environ["KERAS_BACKEND"] = "tensorflow"
 import sys
 import numpy as np
@@ -12,6 +11,7 @@ ROOT_DIR = os.path.abspath(__file__ + "/../../../")
 
 # Import Mask RCNN
 sys.path.append(ROOT_DIR)  # To find local version of the library
+from mrcnn import utils
 import mrcnn.model as modellib
 from samples.ycb.train_ycb import YCBConfig
 from samples.ycb.ycb_dataset import YCBDataset
