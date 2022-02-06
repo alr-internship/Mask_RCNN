@@ -33,7 +33,7 @@ import mrcnn.model as modellib
 def main(args):
 
     # Directory to save logs and trained model
-    MODEL_DIR = os.path.join(ROOT_DIR, "samples/ycb/logs")
+    MODEL_DIR = os.path.join(ROOT_DIR, "resources/ycb")
 
     # Local path to trained weights file
     COCO_MODEL_PATH = os.path.join(ROOT_DIR, "resources/coco/mask_rcnn_coco.h5")
@@ -46,7 +46,7 @@ def main(args):
 
     # %%
         
-    config = YCBConfig()
+    config = YCBConfig(gpus=args.gpus, imgs_per_gpu=args.imgs_per_gpu)
     config.display()
 
     # wandb to monitor system utilization
@@ -79,23 +79,20 @@ def main(args):
 
     # %%
     # Which weights to start with?
-    # init_with = "coco"  # imagenet, coco, or last
-    init_with = "resources/ycb/mask_rcnn_ycb_video_dataset_0008.h5"
-
-    if init_with == "imagenet":
+    if args.init_with == "imagenet":
         model.load_weights(model.get_imagenet_weights(), by_name=True)
-    elif init_with == "coco":
+    elif args.init_with == "coco":
         # Load weights trained on MS COCO, but skip layers that
         # are different due to the different number of classes
         # See README for instructions to download the COCO weights
         model.load_weights(COCO_MODEL_PATH, by_name=True,
                         exclude=["mrcnn_class_logits", "mrcnn_bbox_fc", 
                                     "mrcnn_bbox", "mrcnn_mask"])
-    elif init_with == "last":
+    elif args.init_with == "last":
         # Load the last model you trained and continue training
         model.load_weights(model.find_last(), by_name=True)
     else:
-        model_path = os.path.join(ROOT_DIR, init_with)
+        model_path = os.path.join(ROOT_DIR, args.init_with)
         model.load_weights(model_path, by_name=True)
 
     # %% [markdown]
@@ -145,4 +142,5 @@ if __name__ == "__main__":
     argparse = ArgumentParser()
     argparse.add_argument("--gpus", type=int, default=1)
     argparse.add_argument("--imgs-per-gpu", type=int, default=8)
+    argparse.add_argument("--init-with", type=str, default="coco")
     main(argparse.parse_args())
