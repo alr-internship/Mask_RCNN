@@ -1,14 +1,15 @@
 #!/bin/bash
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=privat@claudiuskienle.de
+# #SBATCH --partition=dev_single,single
 #SBATCH --partition=dev_gpu_4,gpu_4,gpu_8
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=40
 #SBATCH --time=00:30:00
 #SBATCH --gres=gpu:1
 #SBATCH --export=ALL,EXECUTABLE="python ../../samples/ycb/evaluate_ycb_models.py"
-#SBATCH --output="dev_evaluate.out"
-#SBATCH -J OpenMP_Test
+#SBATCH --output="dev_evaluate_cpu.out"
+#SBATCH -J EvMaskRCNN
 
 #Usually you should set
 export KMP_AFFINITY=compact,1,0

@@ -5,9 +5,9 @@
 #SBATCH --nodes=1
 #SBATCH --time=12:00:00
 #SBATCH --cpus-per-task=40
-#SBATCH --export=ALL,EXECUTABLE="python ../samples/ycb/video_data_annotations_generator.py"
+#SBATCH --export=ALL,EXECUTABLE="python ../../samples/ycb/video_data_annotations_generator.py"
 #SBATCH --output="generate_annotations.out"
-#SBATCH -J OpenMP_Test
+#SBATCH -J AnnotYCB
 
 #Usually you should set
 export KMP_AFFINITY=compact,1,0

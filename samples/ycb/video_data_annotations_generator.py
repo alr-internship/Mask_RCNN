@@ -131,16 +131,21 @@ def main(args):
                   iscrowd=iscrowd, input_dir=input_dir, jobs=args.jobs)
 
     # random split
-    ds_border = num_of_images // 20
-    # assert num_of_images == (len(val_indices) + len(train_indices))
+    test_val_border = 100
+    val_train_border = num_of_images // 20
+    print(f"test set: [0:{test_val_border}], val set: [{test_val_border}:{val_train_border}], train set: [{val_train_border}:{num_of_images}]")
 
-    process_to_file(image_names=np.array(image_names)[:ds_border],
-                    image_id_index=np.array(image_id_index)[:ds_border].tolist(),
-                    filename="val_instances", **params)
+    process_to_file(image_names=np.array(image_names)[:test_val_border],
+                    image_id_index=np.array(image_id_index)[:test_val_border].tolist(),
+                    filename="test_instances_2", **params)
 
-    process_to_file(image_names=np.array(image_names)[ds_border:],
-                    image_id_index=np.array(image_id_index)[ds_border:].tolist(),
-                    filename="train_instances", **params)
+    process_to_file(image_names=np.array(image_names)[test_val_border:val_train_border],
+                    image_id_index=np.array(image_id_index)[test_val_border:val_train_border].tolist(),
+                    filename="val_instances_2", **params)
+
+    process_to_file(image_names=np.array(image_names)[val_train_border:],
+                    image_id_index=np.array(image_id_index)[val_train_border:].tolist(),
+                    filename="train_instances_2", **params)
 
 
 if __name__ == "__main__":
