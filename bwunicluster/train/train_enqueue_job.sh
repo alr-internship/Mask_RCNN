@@ -6,7 +6,7 @@
 #SBATCH --cpus-per-task=40
 #SBATCH --time=24:00:00
 #SBATCH --gres=gpu:2
-#SBATCH --export=ALL,EXECUTABLE="python ../samples/ycb/train_ycb.py"
+#SBATCH --export=ALL,EXECUTABLE="python ../../samples/ycb/train_ycb.py"
 #SBATCH --output="train_ycb.out"
 #SBATCH -J OpenMP_Test
 

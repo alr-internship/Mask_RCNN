@@ -114,7 +114,7 @@ def main(args):
     start_train = time.time()
     model.train(dataset_train, dataset_val, 
                 learning_rate=config.LEARNING_RATE, 
-                epochs=20, 
+                epochs=40, 
                 layers='heads')
     end_train = time.time()
     minutes = round((end_train - start_train) / 60, 2)
@@ -128,7 +128,7 @@ def main(args):
     start_train = time.time()
     model.train(dataset_train, dataset_val, 
                 learning_rate=config.LEARNING_RATE / 10,
-                epochs=60,
+                epochs=100,
                 layers="all")
     end_train = time.time()
     minutes = round((end_train - start_train) / 60, 2)
