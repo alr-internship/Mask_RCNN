@@ -8,7 +8,7 @@
 #SBATCH --gres=gpu:2
 #SBATCH --export=ALL,EXECUTABLE="python ../../samples/ycb/train_ycb.py"
 #SBATCH --output="train_ycb.out"
-#SBATCH -J OpenMP_Test
+#SBATCH -J TrainMaskRCNN
 
 #Usually you should set
 export KMP_AFFINITY=compact,1,0
