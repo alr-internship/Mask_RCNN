@@ -29,9 +29,9 @@ def main(args):
     data_dir = Path(ROOT_DIR + "/samples/ycb/data/YCB_Video_Dataset")
 
     # Validation dataset
-    dataset_val = YCBDataset()
-    dataset_val.load_data(data_dir / "annotations/val_instances.json", data_dir / "data")
-    dataset_val.prepare()
+    dataset_test = YCBDataset()
+    dataset_test.load_data(data_dir / "annotations/test_instances.json", data_dir / "data")
+    dataset_test.prepare()
     # Recreate the model in inference mode
     model = modellib.MaskRCNN(mode="inference", 
                             config=config,
@@ -40,8 +40,6 @@ def main(args):
     # Get path to saved weights
     # Either set a specific path or find last trained weights
     model_checkpoints = sorted(args.models_dir.glob("*.h5"))
-
-    image_ids = np.random.choice(dataset_val.image_ids, 100)
 
     metrics = []
     for model_checkpoint in model_checkpoints:
@@ -52,10 +50,10 @@ def main(args):
         # Compute VOC-Style mAP @ IoU=0.5
         # Running on N images. Increase for better accuracy.
         APs = []
-        for image_id in image_ids:
+        for image_id in dataset_test.image_ids:
             # Load image and ground truth data
             image, _, gt_class_id, gt_bbox, gt_mask =\
-                modellib.load_image_gt(dataset_val, config,
+                modellib.load_image_gt(dataset_test, config,
                                     image_id, use_mini_mask=False)
             # Run object detection
             results = model.detect([image], verbose=0)
@@ -72,7 +70,7 @@ def main(args):
             "sAP": np.std(APs)
         })
 
-    with open(f'eval.csv', 'w') as csvfile:
+    with open(f'{args.models_dir}/eval.csv', 'w') as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames = metrics[0].keys())
         writer.writeheader()
         writer.writerows(metrics)
@@ -80,5 +78,5 @@ def main(args):
 
 if __name__ == "__main__":
     argparse = ArgumentParser()
-    argparse.add_argument("--models_dir", type=Path, default=f"{ROOT_DIR}/resources/ycb/ycb_video_dataset20220205T1517")
+    argparse.add_argument("models_dir", type=Path)
     main(argparse.parse_args())

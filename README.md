@@ -85,20 +85,26 @@ Test
 ----
 
 To test the trained MaskRCNN, one can execute the [test_ycb.ipynb](samples/ycb/test_ycb.ipynb).
-Make sure to adapt the path to the generate snapshot of the model (`.h5` extension).
-Per default, samples from the validation dataset will be used to test the model.
+Make sure to adapt the path to the generated snapshot of the model (`.h5` extension).
+Per default, samples from the test dataset will be used to test the model.
 
 Evaluate
 ----
 
-The evaluation of the trained model snapshots can be conducted with the [evaluate_ycb_models.py](samples/ycb/evaluate_ycb_models.py). This file evaluates a directory containing all the snapshots. It will compute the `mAP` on 100 randomly chosen samples from the validation dataset for every snapshot.
-The evaluation results will be printed to the stdout
+The evaluation of the trained model snapshots can be conducted with the [evaluate_ycb_models.py](samples/ycb/evaluate_ycb_models.py). 
+```bash
+evaluate_ycb_models.py %PATH_TO_MODELS_DIR
+```
+
+This file evaluates a directory %PATH_TO_MODELS_DIR% containing all the snapshots. 
+It will compute the `mAP` (mean Average Prediction) on the test dataset for every snapshot.
+The evaluation results will be saved in a CSV in %PATH_TO_MODELS_DIR%
 
 BwUniCluster 2.0
 ----
 
 The majority of scripts can be executed in the [BwUniCluster 2.0](https://wiki.bwhpc.de/e/Main_Page).
-All relevant scripts are located in [bwunicluster](bwunicluster)
+All relevant scripts are located in [bwunicluster](bwunicluster).
 
 
 Refernces
