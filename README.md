@@ -100,3 +100,10 @@ BwUniCluster 2.0
 The majority of scripts can be executed in the [BwUniCluster 2.0](https://wiki.bwhpc.de/e/Main_Page).
 All relevant scripts are located in [bwunicluster](bwunicluster)
 
+
+Refernces
+-----
+- https://github.com/sThalham/shelf_classification 
+- https://github.com/akTwelve/tutorials/blob/master/mask_rcnn/MaskRCNN_TrainAndInference.ipynb 
+- https://github.com/iyezhiyu/Mask_RCNN_on_YCB_Video_Dataset 
+- https://github.com/akTwelve/Mask_RCNN
