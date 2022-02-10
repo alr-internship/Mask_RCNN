@@ -5,9 +5,9 @@
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=40
 #SBATCH --time=00:30:00
-#SBATCH --gres=gpu:2
-#SBATCH --export=ALL,EXECUTABLE="python ../../samples/ycb/train_ycb.py --gpus=2"
-#SBATCH --output="dev_train_ycb.out"
+#SBATCH --gres=gpu:4
+#SBATCH --export=ALL,EXECUTABLE="python ../../samples/ycb/train_ycb.py --gpus=4"
+#SBATCH --output="dev_train_ycb_4gpu.out"
 #SBATCH -J TrainMaskRCNN
 
 #Usually you should set

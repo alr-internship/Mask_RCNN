@@ -7,8 +7,8 @@
 #SBATCH --cpus-per-task=40
 #SBATCH --time=00:30:00
 #SBATCH --gres=gpu:1
-#SBATCH --export=ALL,EXECUTABLE="python ../../samples/ycb/evaluate_ycb_models.py ../../resources/ycb/ycb_video_dataset20220206T1419"
-#SBATCH --output="dev_evaluate_cpu.out"
+#SBATCH --export=ALL,EXECUTABLE="python ../../samples/ycb/evaluate_ycb_models.py ../../resources/ycb/ycb_video_dataset20220209T2002" 
+#SBATCH --output="dev_evaluate.out"
 #SBATCH -J EvMaskRCNN
 
 #Usually you should set

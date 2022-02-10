@@ -137,15 +137,15 @@ def main(args):
 
     process_to_file(image_names=np.array(image_names)[:test_val_border],
                     image_id_index=np.array(image_id_index)[:test_val_border].tolist(),
-                    filename="test_instances_2", **params)
+                    filename="test_instances", **params)
 
     process_to_file(image_names=np.array(image_names)[test_val_border:val_train_border],
                     image_id_index=np.array(image_id_index)[test_val_border:val_train_border].tolist(),
-                    filename="val_instances_2", **params)
+                    filename="val_instances", **params)
 
     process_to_file(image_names=np.array(image_names)[val_train_border:],
                     image_id_index=np.array(image_id_index)[val_train_border:].tolist(),
-                    filename="train_instances_2", **params)
+                    filename="train_instances", **params)
 
 
 if __name__ == "__main__":

@@ -32,8 +32,6 @@ class YCBConfig(Config):
     # few objects. Aim to allow ROI sampling to pick 33% positive ROIs.
     TRAIN_ROIS_PER_IMAGE = 32
 
-    # Use a small epoch since the data is simple
-    STEPS_PER_EPOCH = 500
 
     # use small validation steps since the epoch is small
     VALIDATION_STEPS = 5
@@ -47,4 +45,6 @@ class YCBConfig(Config):
         # GPU because the images are small. Batch size is 8 (GPUs * images/GPU).
         self.GPU_COUNT = gpus
         self.IMAGES_PER_GPU = imgs_per_gpu
+        # Use a small epoch since the data is simple
+        self.STEPS_PER_EPOCH = 500 // self.GPU_COUNT
         super().__init__()
