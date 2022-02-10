@@ -83,8 +83,10 @@ Training
 
 Trained Model
 ----
+
 Weights of a trained model can be downloaded from following google drive link:
 [https://drive.google.com/file/d/1XVHJHIH7na1Q5OpX5mtVjdweOk3ltjsw/view?usp=sharing](https://drive.google.com/file/d/1XVHJHIH7na1Q5OpX5mtVjdweOk3ltjsw/view?usp=sharing)
+
 Test
 ----
 
