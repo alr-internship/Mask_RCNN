@@ -113,7 +113,7 @@ The majority of scripts can be executed in the [BwUniCluster 2.0](https://wiki.b
 All relevant scripts are located in [bwunicluster](bwunicluster).
 
 
-Refernces
+References
 -----
 - https://github.com/sThalham/shelf_classification 
 - https://github.com/akTwelve/tutorials/blob/master/mask_rcnn/MaskRCNN_TrainAndInference.ipynb 
