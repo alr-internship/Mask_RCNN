@@ -2,7 +2,7 @@ Mask R-CNN trained on YCB Video Dataset
 ====
 
 Detection example (trained for 8 epochs):
-![](assets/img1.png)
+![](assets/result1.png)
 
 Setup
 ----
